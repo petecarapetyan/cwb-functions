@@ -4,5 +4,7 @@ admin.initializeApp(functions.config().firebase);
 
 exports = Object.assign(
   exports,
-  require("./processMedia")
+  require("./processMedia"),
+  require("./register"),
+  require("./roles")
 );
