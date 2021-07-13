@@ -18,7 +18,7 @@
     "@google-cloud/storage": "^5.8.3",
     "child-process-promise": "^2.2.1",
     "firebase-admin": "^9.6.0",
-    "firebase-functions": "^3.13.2",
+    "firebase-functions": "^3.14.1",
     "firebase-functions-helper": "^0.11.0"
   },
   "devDependencies": {

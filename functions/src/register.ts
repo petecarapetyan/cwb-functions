@@ -8,7 +8,10 @@ export const registerNewUser = functions.auth
     const claims = {
       user: true
     };
-    await db.collection("users").doc(`${user.uid}`).set(claims);
+    const roles = {
+      roles: JSON.stringify(claims)
+    }
+    await db.collection("users").doc(`${user.uid}`).set(roles);
     const uid = user.uid;
     return admin.auth().setCustomUserClaims(uid, claims);
   });

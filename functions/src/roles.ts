@@ -2,12 +2,14 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 
 export const setUserRoles = functions.firestore
-.document('users/{userId}/roles')
-.onWrite(async (change, context) => {
-  const uid = context.auth?.uid;
-  const claims = change;
-  if(uid){
-    await admin.auth().setCustomUserClaims(uid, claims);
-  }
-  return
-});
+  .document("users/{userId}")
+  .onWrite(async (change, context) => {
+    const userData = change.after.data();
+    if (userData && userData["roles"]) {
+      const rolesObject = userData["roles"];
+      const uid = context.auth?.uid;
+      if (uid && rolesObject) {
+        await admin.auth().setCustomUserClaims(uid, rolesObject);
+      }
+    }
+  });
