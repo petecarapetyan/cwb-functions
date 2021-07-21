@@ -12,6 +12,6 @@ export const registerNewUser = functions.auth
       roles: JSON.stringify(claims)
     }
     await db.collection("users").doc(`${user.uid}`).set(roles);
-    const uid = user.uid;
-    return admin.auth().setCustomUserClaims(uid, claims);
+    // const uid = user.uid;
+    // return admin.auth().setCustomUserClaims(uid, claims);
   });
