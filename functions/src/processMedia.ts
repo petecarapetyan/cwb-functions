@@ -40,7 +40,7 @@ exports.processImages = functions
       // processing = true
       await bucket.file(filePath).download({ destination: tempSourceFilePath });
 
-      if (contentType && contentType.startsWith("image/")) {
+      if (contentType && contentType.startsWith("image/") && pathObj.ext !== ".svg") {
         // to console.log when troubleshooting
         // const metageneration = object.metageneration;
         // console.log(JSON.stringify(metageneration))
